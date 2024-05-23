@@ -20,14 +20,14 @@ function ProfileCard() {
                 console.error('Error connecting to MetaMask', error);
             }
         } else {
-            console.log('MetaMask not detected. Please install it:', 'https://chromewebstore.google.com/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en');
             alert('MetaMask not detected. Please install it:', 'https://chromewebstore.google.com/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en')
+            console.log('MetaMask not detected. Please install it:', 'https://chromewebstore.google.com/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en');
         }
     }
 
     async function connectWallet() {
+        await requestAccount();
         if (typeof window.ethereum !== "undefined") {
-            await requestAccount();
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
             const balance = await signer.getBalance();
