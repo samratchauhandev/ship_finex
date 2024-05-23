@@ -98,7 +98,7 @@ export default function CoinsTable() {
         />
         <TableContainer component={Paper}>
           {loading ? (
-            <LinearProgress style={{ backgroundColor: 'white' }} />
+            <LinearProgress />
           ) : (
             <Table aria-label="simple table">
               <TableHead style={{ backgroundColor: "white" }}>

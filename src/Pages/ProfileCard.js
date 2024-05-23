@@ -45,7 +45,7 @@ function ProfileCard() {
             <Tooltip title="Open settings">
                 <IconButton style={{ margin: 15 }} onClick={handelprofile} sx={{ p: 0 }}>
                     <Avatar alt="User profile" src="/src/Pages/avatar.jpg">
-                    { account ? '🙋🏻‍♂️' :"🗨️"}
+                        {account ? '🙋🏻‍♂️' : "🗨️"}
                     </Avatar>
                 </IconButton>
             </Tooltip>
@@ -53,22 +53,30 @@ function ProfileCard() {
                 state ?
                     <Box sx={{
                         position: "absolute", top: "100%", right: "40%", p: 2.5, borderRadius: 12,
-                        background: "#14161a",
+                        background: "rgba(32 34 37)",
                     }}>
                         <Button
                             variant="outlined"
-                            style={{ height: 40 , width: 'max-content'}}
+                            style={{ height: 40, width: 'max-content', marginBottom: "16px" }}
                             onClick={connectWallet}
-                            sx={{ marginBottom: 2 }}
                         >
                             {account ? 'Connected' : 'Connect Account'}
                         </Button>
                         {account && (
-                            <>
-                                <Typography variant="h6">Account: {account}</Typography>
-                                <Typography variant="h6">Balance: {balance} {symbol}</Typography>
-                                <Typography variant="h6">Currency: {currency}</Typography>
-                            </>
+                            <Box sx={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+                                <Box sx={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                                    <Typography variant="h6">Account: </Typography>
+                                    <Typography>{account}</Typography>
+                                </Box>
+                                <Box sx={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                                    <Typography variant="h6">Balance:</Typography>
+                                    <Typography>{balance} {symbol}</Typography>
+                                </Box>
+                                <Box sx={{ display: "flex", alignItems: "center", gap: "16px" }}>
+                                    <Typography variant="h6">Currency:</Typography>
+                                    <Typography>{currency}</Typography>
+                                </Box>
+                            </Box>
                         )}
                     </Box> : null
             }
